@@ -19,12 +19,12 @@ public class SalleSoldat extends Salle {
 	 */
 	public void creerSoldat() {
 		if (this.getNbCourantFourmi() > 1) {
-			if (Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_SOLDAT))
-				ajouterFourmi(1);
 			if (this.getNbCourantFourmi() == 2)
 				ajouterFourmi(1);
 			if (this.getNbCourantFourmi() == 3)
 				ajouterFourmi(2);
+			if (Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_SOLDAT))
+				ajouterFourmi(1);
 		}
 	}
 }

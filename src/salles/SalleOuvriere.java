@@ -19,12 +19,12 @@ public class SalleOuvriere extends Salle {
 	 */
 	public void creerOuvriere() {
 		if (this.getNbCourantFourmi() > 1) {
-			if (Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_OUVRIERES))
-				ajouterFourmi(1);
 			if (this.getNbCourantFourmi() == 2)
 				ajouterFourmi(1);
 			if (this.getNbCourantFourmi() == 4)
 				ajouterFourmi(2);
+			if (Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_OUVRIERES))
+				ajouterFourmi(1);
 		}
 	}
 }
