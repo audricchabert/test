@@ -31,7 +31,7 @@ public class Salle {
 		
 		if (i > 0) {
 			
-			this.nbCourantFourmi += i;
+			this.nbCourantFourmi -= i;
 			return true;
 		}
 		else
