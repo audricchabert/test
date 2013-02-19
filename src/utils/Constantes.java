@@ -9,7 +9,7 @@ package utils;
 public class Constantes {
 	
 	/**
-	 * Les évènements
+	 * Les ï¿½vï¿½nements
 	 */
 	public static final String EVEN_NIVEAU = "Niveau+1";
 	public static final String EVEN_PV = "PV+1";
@@ -29,5 +29,6 @@ public class Constantes {
 	public static int CREER_NOURRICE = 2;
 	public static int OBJECTIF = 3;
 
+	public static int test = 0;
 	
 }
