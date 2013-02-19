@@ -8,6 +8,19 @@ package utils;
 
 public class Constantes {
 	
+	/**
+	 * Les évènements
+	 */
+	public static final String EVEN_NIVEAU = "Niveau+1";
+	public static final String EVEN_PV = "PV+1";
+	public static final String EVEN_LARVE = "Larve+2";
+	public static final String EVEN_RECOLTE = "Recolte+3";
+	public static final String EVEN_DEPLACEMENT = "Deplacement+3";
+	public static final String EVEN_SOLDAT = "Soldat+1";
+	public static final String EVEN_PHEROMONE = "Pheromone+1";
+	public static final String EVEN_OUVRIERES = "Ouvriere+1";
+	
+	
 	/* Salle ouvriÃ¨re */
 	
 	// Indices pour evenements

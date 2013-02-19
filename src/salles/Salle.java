@@ -8,21 +8,41 @@ public class Salle {
 		this.nbCourantFourmi = 0;
 	}
 	
-	boolean ajouterFourmi(){
+	public boolean ajouterFourmi(){
 		return ajouterFourmi(1);
 	}
 	
-	boolean ajouterFourmi(int i){
+	public boolean ajouterFourmi(int i) {
 		
-		if(i > 0){
+		if(i > 0) {
 			
 			this.nbCourantFourmi += i;
 			return true;
-		}else{
-			
-			return false;
 		}
+		else
+			return false;
 	}
 	
-	//.. ETC
+	public boolean supprimerFourmi() {
+		return supprimerFourmi(1);
+	}
+	
+	public boolean supprimerFourmi(int i) {
+		
+		if (i > 0) {
+			
+			this.nbCourantFourmi += i;
+			return true;
+		}
+		else
+			return false;
+	}
+
+	public byte getNbCourantFourmi() {
+		return nbCourantFourmi;
+	}
+
+	public void setNbCourantFourmi(byte nbCourantFourmi) {
+		this.nbCourantFourmi = nbCourantFourmi;
+	}
 }
