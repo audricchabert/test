@@ -1,5 +1,6 @@
 package main;
 
+import tests.SalleAtelierTest;
 import vues.console;
 
 public class main {
