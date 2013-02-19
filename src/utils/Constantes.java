@@ -20,7 +20,12 @@ public class Constantes {
 	public static final String EVEN_PHEROMONE = "Pheromone+1";
 	public static final String EVEN_OUVRIERES = "Ouvriere+1";
 	
-	
+	/**
+	 * Les types de ressources
+	 */
+	public static final String RESS_TERRE = "Terre";
+	public static final String RESS_NOURRITURE = "Nourriture";
+	public static final String RESS_PIERRE = "Pierre";
 	/* Salle ouvrière */
 	
 	// Indices pour evenements
