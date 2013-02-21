@@ -33,7 +33,5 @@ public class Constantes {
 	public static int AMELIORER_FOURMILIERE = 1;
 	public static int CREER_NOURRICE = 2;
 	public static int OBJECTIF = 3;
-
-	public static int test = 0;
 	
 }
