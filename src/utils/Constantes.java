@@ -28,6 +28,7 @@ public class Constantes {
 	public static final String RESS_PIERRE = "Pierre";
 	/* Salle ouvrière */
 	
+	
 	/**
 	 * EVENEMENTS
 	 */
@@ -45,4 +46,9 @@ public class Constantes {
 	public static char DROITE = 'd';
 	public static char GAUCHE = 'g';
 	
+	
+	/**
+	 * Les constantes de la classe fourmiliere
+	 */
+	public static final int NIVEAU_FOURMILIERE_MAX = 4;
 }
