@@ -31,7 +31,8 @@ public class GestionSallesTest {
 		
 		SalleLarve sl = gs.getSalleLarve();
 		
-		assertEquals(1, sl.getNbCourantFourmi());
+		// On s'attend à 2 (1 de base + 1 grâce a la naissance)
+		assertEquals(2, sl.getNbCourantFourmi());
 	}
 	
 	@Test
@@ -50,11 +51,12 @@ public class GestionSallesTest {
 	public void testNaissanceOuvrieres(){
 		GestionSalles gs = new GestionSalles();
 		
-		assertTrue(gs.naissanceOuvrieres(2));
+		assertTrue(gs.naissanceOuvrieres(2)); // 2 nourrices => 1 ouvriere
 		
 		SalleOuvriere sl = gs.getSalleOuvriere();
 		
-		assertEquals(1, sl.getNbCourantFourmi()); // 2 => 1 soldat
+		// 2 ouvrieres de base + 1 créé => 3
+		assertEquals(3, sl.getNbCourantFourmi()); 
 	}
 	
 	@Test

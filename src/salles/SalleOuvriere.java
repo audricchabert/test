@@ -16,11 +16,11 @@ public class SalleOuvriere extends Salle {
 	 * Prise en compte de l'�v�nement "Ouvriere+1"
 	 * 
 	 */
-	public void creerOuvriere(String evenementActuel) {
-		if (this.getNbCourantFourmi() > 1) {
-			if (this.getNbCourantFourmi() == 2)
+	public void creerOuvriere(String evenementActuel, int nbLarves) {
+		if (nbLarves > 1) {
+			if (nbLarves == 2)
 				ajouterFourmi(1);
-			if (this.getNbCourantFourmi() == 4)
+			if (nbLarves == 4)
 				ajouterFourmi(2);
 			if (evenementActuel.equals(Constantes.EVEN_OUVRIERES))
 				ajouterFourmi(1);

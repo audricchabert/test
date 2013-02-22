@@ -37,8 +37,14 @@ public class GestionSalles {
 		this.salleAtelier = new SalleAtelier();
 		this.salleLarve = new SalleLarve();
 		this.salleNourrice = new SalleNourrice();
+		this.salleOuvriere = new SalleOuvriere();
 		this.salleSoldat = new SalleSoldat();
 		this.salleStock = new SalleStock();
+		
+		// Ajouter 3 nourrices, 2 ouvrieres, 1 larves
+		this.salleNourrice.ajouterFourmi(3);
+		this.salleOuvriere.ajouterFourmi(2);
+		this.salleLarve.ajouterFourmi(1);
 		
 		//Evenement
 		this.indiceEvnt = 0; // On commence au premier évenement	
@@ -68,9 +74,7 @@ public class GestionSalles {
 		}else{
 			salleNourrice.supprimerFourmi(nbNourriceUtilisee);
 			
-			// Pour les salle de larve, il faudra "ajouter les fourmi" puis appeler creerLarve
-			salleLarve.ajouterFourmi(nbNourriceUtilisee);
-			salleLarve.creerLarve(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
+			salleLarve.creerLarve(Constantes.LISTE_EVENEMENTS[this.indiceEvnt], nbNourriceUtilisee);
 			
 			return true;
 		}
@@ -79,42 +83,40 @@ public class GestionSalles {
 	
 	public boolean naissanceSoldats(int nbNourriceUtilisee){
 		if( (nbNourriceUtilisee <= 1) || (nbNourriceUtilisee > 3) ){
-			System.out.println("Erreur lors de la création de fourmis: nb supérieur à 1 et inférieur à 4 seulement");
+			System.out.println("Erreur lors de la création de soldats: nb supérieur à 1 et inférieur à 4 seulement");
 			return false;
 		}
 		
 		int nbNourrices = salleNourrice.getNbCourantFourmi();
 		
 		if(nbNourrices < nbNourriceUtilisee){
-			System.out.println("Erreur lors de la création de fourmis: pas assez de nourrices");
+			System.out.println("Erreur lors de la création de soldats: pas assez de nourrices");
 			return false;
 		}else{
 			salleNourrice.supprimerFourmi(nbNourriceUtilisee);
 			
-			salleSoldat.ajouterFourmi(nbNourriceUtilisee);
-			salleSoldat.creerSoldat(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
+			salleSoldat.creerSoldat(Constantes.LISTE_EVENEMENTS[this.indiceEvnt], nbNourriceUtilisee);
 			
 			return true;
 		}
 	}
 	
 	public boolean naissanceOuvrieres(int nbNourriceUtilisee){
-		if( (nbNourriceUtilisee <= 1) || (nbNourriceUtilisee > 3) ){
-			System.out.println("Erreur lors de la création de fourmis: nb supérieur à 1 et inférieur à 5 seulement");
+		if( (nbNourriceUtilisee <= 1) || (nbNourriceUtilisee > 4) ){
+			System.out.println("Erreur lors de la création d'ouvrieres: nb supérieur à 1 et inférieur à 5 seulement");
 			return false;
 		}
 		
 		int nbNourrices = salleNourrice.getNbCourantFourmi();
 		
 		if(nbNourrices < nbNourriceUtilisee){
-			System.out.println("Erreur lors de la création de fourmis: pas assez de nourrices");
+			System.out.println("Erreur lors de la création d'ouvrieres: pas assez de nourrices");
 			return false;
 		}else{
 			// On retire nbNourrice modulo 2 car l'utilisateur peut choisir d'utiliser 3 nourrice (on ne lui en enleverra que 2)
 			salleNourrice.supprimerFourmi(nbNourriceUtilisee - (nbNourriceUtilisee%2) );
 			
-			salleSoldat.ajouterFourmi(nbNourriceUtilisee - (nbNourriceUtilisee%2) );
-			salleSoldat.creerSoldat(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
+			salleOuvriere.creerOuvriere(Constantes.LISTE_EVENEMENTS[this.indiceEvnt], nbNourriceUtilisee - (nbNourriceUtilisee%2));
 			
 			return true;
 		}

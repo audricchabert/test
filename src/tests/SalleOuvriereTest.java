@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import plateauIndividuel.Evenements;
 import salles.SalleOuvriere;
 import utils.Constantes;
 
@@ -20,18 +19,19 @@ public class SalleOuvriereTest {
 	@Test
 	public void testCreerOuvriere() {
 		SalleOuvriere testOuvriere = new SalleOuvriere();
-		testOuvriere.ajouterFourmi(2);
-		testOuvriere.creerOuvriere(Constantes.EVEN_OUVRIERES);
-		assertEquals(3, testOuvriere.getNbCourantFourmi());
+		
+		testOuvriere.creerOuvriere(Constantes.EVEN_OUVRIERES, 2);
+		// 2 nourrices => 1 ouvriere + 1 (evenement)
+		assertEquals(2, testOuvriere.getNbCourantFourmi());
 	}
 	
 	@Test
 	public void testCreerOuvriere2() {
 		SalleOuvriere testOuvriere2 = new SalleOuvriere();
-		testOuvriere2.ajouterFourmi(2);
-		Evenements.getInstance().modifierEvenement(Constantes.EVEN_OUVRIERES, new Boolean(true));
-		testOuvriere2.creerOuvriere(Constantes.EVEN_OUVRIERES);
-		assertEquals(4, testOuvriere2.getNbCourantFourmi());
+		
+		testOuvriere2.creerOuvriere(Constantes.EVEN_OUVRIERES, 4);
+		// 4 nourrices => 2 ouvrieres + 1 (evenement)
+		assertEquals(3, testOuvriere2.getNbCourantFourmi());
 	}
 
 }
