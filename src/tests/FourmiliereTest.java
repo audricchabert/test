@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import utils.Constantes;
+import utils.Fonctions;
 import plateauIndividuel.Fourmiliere;
 
 public class FourmiliereTest 
@@ -25,12 +25,12 @@ public class FourmiliereTest
 		assertEquals(un.getNiveauxFourmiliere(),niveauFourmiliereAttenduUn);
 		
 		assertEquals(deux.getNiveauMaximumCourant(),1);
-		assertEquals(deux.getNiveauxFourmiliere(),niveauFourmiliereAttenduDeux);
+		assertTrue( Fonctions.arrayBoolEquals(deux.getNiveauxFourmiliere(),niveauFourmiliereAttenduDeux));
 		
 	}
 	
 	/**
-	 * Test des accesseurs en lecture et en écriture
+	 * Test des accesseurs en lecture et en ï¿½criture
 	 */
 	@Test
 	public void testAccesseursNiveauMaximumCourant()
