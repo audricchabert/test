@@ -23,6 +23,7 @@ public class Constantes {
 	/**
 	 * Les types de ressources
 	 */
+	public static final String RESS_LARVE = "Larve";
 	public static final String RESS_TERRE = "Terre";
 	public static final String RESS_NOURRITURE = "Nourriture";
 	public static final String RESS_PIERRE = "Pierre";

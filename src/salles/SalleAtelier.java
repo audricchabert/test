@@ -42,6 +42,7 @@ public class SalleAtelier extends Salle{
 				evenements[indiceEvenement] = true;
 				return true;
 			}else{
+				System.out.println("Il y a déja une nourrice sur cette évènement");
 				return false;
 			}
 			

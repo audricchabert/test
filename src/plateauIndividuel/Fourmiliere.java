@@ -3,7 +3,7 @@ package plateauIndividuel;
 import utils.Constantes;
 
 /**
- * La classe fourmiliere representera les niveaux de la fourmilière
+ * La classe fourmiliere representera les niveaux de la fourmiliï¿½re
  * @author achabert
  *
  */
@@ -11,10 +11,10 @@ import utils.Constantes;
 public class Fourmiliere 
 {
 	/**
-	 * Les attributs de la fourmilière,
+	 * Les attributs de la fourmiliï¿½re,
 	 * on doit representer le niveau maximal de la fourmiliere accessible au joueur,
-	 * et le nombre d'ouvrières travaillant dans chaque niveau.
-	 * Puisque seul une ouvrière peut travailler dans un niveau,
+	 * et le nombre d'ouvriï¿½res travaillant dans chaque niveau.
+	 * Puisque seul une ouvriï¿½re peut travailler dans un niveau,
 	 * nous avons choisi d'utiliser des booleens.
 	 */
 	public boolean[] niveauxFourmiliere = new boolean[Constantes.NIVEAU_FOURMILIERE_MAX];
@@ -25,7 +25,7 @@ public class Fourmiliere
 	 */
 	
 	/**
-	 * Constructeur à deux paramètres
+	 * Constructeur ï¿½ deux paramï¿½tres
 	 * @param niveauxFourmiliere
 	 * @param niveauMaximumCourant
 	 */
@@ -36,11 +36,11 @@ public class Fourmiliere
 	}
 	
 	/**
-	 * Constructeur sans paramètres
+	 * Constructeur sans paramï¿½tres
 	 */
 	public Fourmiliere()
 	{
-		this(new boolean[Constantes.NIVEAU_FOURMILIERE_MAX],1);
+		this(new boolean[Constantes.NIVEAU_FOURMILIERE_MAX] , 0); // Niveau 0 au dÃ©but
 	}
 	
 	/**
@@ -65,11 +65,11 @@ public class Fourmiliere
 	}
 	
 	/**
-	 * Accesseurs en écriture
+	 * Accesseurs en ï¿½criture
 	 */
 	
 	/**
-	 * Accesseur en écriture du niveauMaximumCourant
+	 * Accesseur en ï¿½criture du niveauMaximumCourant
 	 * @param entier
 	 */
 	public void setNiveauMaximumCourant(int nouveauNiveauMaximumCourant)
@@ -78,10 +78,37 @@ public class Fourmiliere
 	}
 	
 	/**
-	 * Accesseur en écriture du tableau de niveaux
+	 * Accesseur en ï¿½criture du tableau de niveaux
 	 */
 	public void setNiveauxFourmiliere(boolean[] nouveauNiveauxFourmiliere)
 	{
 		this.niveauxFourmiliere = nouveauNiveauxFourmiliere;
 	}
+	
+	 /**
+		 * Retourne les ressources dut a la prÃ©sence d'une larve a un niveau
+		 * larve/nourriture/terre/pierre
+		 * return 
+		 */
+		public int[] genererRessources(){
+			int[] ressources = new int[4];
+			for(int i=0;i<4;i++){
+				ressources[i]=0;
+			}
+			if(niveauxFourmiliere[0]){
+				ressources[0]=1;
+			}
+			
+			if(niveauxFourmiliere[1]){
+				ressources[1]=1;
+			}
+			
+			 if(niveauxFourmiliere[2]){
+					ressources[2]=1;
+					ressources[3]=1;
+				}
+			
+			return ressources;
+		}
+		
 }
