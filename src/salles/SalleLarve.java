@@ -3,7 +3,6 @@
  */
 package salles;
 
-import plateauIndividuel.Evenements;
 import utils.Constantes;
 /**
  * @author Antoine Lavail
@@ -12,10 +11,10 @@ import utils.Constantes;
 public class SalleLarve extends Salle {
 	
 	/**
-	 * Prise en compte de l'évènement "Larve+2"
+	 * Prise en compte de l'ï¿½vï¿½nement "Larve+2"
 	 * 
 	 */
-	public void creerLarve() {
+	public void creerLarve(String evenementActuel) {
 		if (this.getNbCourantFourmi() > 0) {
 			if (this.getNbCourantFourmi() == 1)
 				ajouterFourmi(1);
@@ -23,7 +22,7 @@ public class SalleLarve extends Salle {
 				ajouterFourmi(3);
 			if (this.getNbCourantFourmi() == 3)
 				ajouterFourmi(5);
-			if (Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_LARVE))
+			if (evenementActuel.equals(Constantes.EVEN_LARVE))
 				ajouterFourmi(2);
 		}
 	}

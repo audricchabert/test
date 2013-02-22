@@ -13,7 +13,7 @@ public class SalleLarveTest {
 	public void testCreerLarve() {
 		SalleLarve testLarve = new SalleLarve();
 		testLarve.ajouterFourmi(2);
-		testLarve.creerLarve();
+		testLarve.creerLarve(Constantes.EVEN_LARVE);
 		assertEquals(5, testLarve.getNbCourantFourmi());
 	}
 	
@@ -22,7 +22,7 @@ public class SalleLarveTest {
 		SalleLarve testLarve2 = new SalleLarve();
 		testLarve2.ajouterFourmi(2);
 		Evenements.getInstance().modifierEvenement(Constantes.EVEN_LARVE, new Boolean(true));
-		testLarve2.creerLarve();
+		testLarve2.creerLarve(Constantes.EVEN_LARVE);
 		assertEquals(7, testLarve2.getNbCourantFourmi());
 	}
 

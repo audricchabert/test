@@ -28,10 +28,21 @@ public class Constantes {
 	public static final String RESS_PIERRE = "Pierre";
 	/* Salle ouvrière */
 	
+	/**
+	 * EVENEMENTS
+	 */
+	
+	public static int NOMBRE_EVENEMENTS = 8;
+	public static String[] LISTE_EVENEMENTS = {EVEN_NIVEAU, EVEN_PV, EVEN_LARVE, EVEN_RECOLTE, EVEN_DEPLACEMENT, EVEN_SOLDAT, EVEN_PHEROMONE, EVEN_OUVRIERES};
+	
 	// Indices pour evenements
 	public static int NOUVELLE_GALERIE = 0;
 	public static int AMELIORER_FOURMILIERE = 1;
 	public static int CREER_NOURRICE = 2;
 	public static int OBJECTIF = 3;
+	
+	//Mouvements
+	public static char DROITE = 'd';
+	public static char GAUCHE = 'g';
 	
 }

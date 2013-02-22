@@ -1,5 +1,5 @@
 /**
- * Cette classe implémente le pattern Singleton.
+ * Cette classe implï¿½mente le pattern Singleton.
  */
 package plateauIndividuel;
 
@@ -32,7 +32,7 @@ public class Evenements {
 	public LinkedHashMap<String, Boolean> getListeEvenements() {
 		return listeEvenements;
 	}
-
+	
 	private static class EvenementsHolder
 	{
 		private final static Evenements instance = new Evenements();

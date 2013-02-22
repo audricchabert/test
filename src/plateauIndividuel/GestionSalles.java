@@ -1,23 +1,35 @@
 package plateauIndividuel;
 
+/**
+ * Modélisation de la gestion des salles.
+ * Dans cette classe, on fera le lien entre joueur et plateau individuel, cela nous permet 
+ * d'éviter d'avoir un code trop volumineu.
+ * 
+ * Ici, on gérera les interactions entre les salles, les suppression/ajouts de fourmis etc..
+ * 
+ * @author mazen
+ */
+
 import salles.SalleAtelier;
 import salles.SalleLarve;
 import salles.SalleNourrice;
 import salles.SalleOuvriere;
 import salles.SalleSoldat;
 import salles.SalleStock;
+import utils.Constantes;
 
 public class GestionSalles {
 
 	/* LES SALLES */
-	SalleAtelier salleAtelier;
-	SalleLarve salleLarve;
-	SalleNourrice salleNourrice;
-	SalleOuvriere salleOuvriere;
-	SalleSoldat salleSoldat;
-	SalleStock salleStock;
-	Evenements evenements;
+	private SalleAtelier salleAtelier;
+	private SalleLarve salleLarve;
+	private SalleNourrice salleNourrice;
+	private SalleOuvriere salleOuvriere;
+	private SalleSoldat salleSoldat;
+	private SalleStock salleStock;
 	
+	/* EVENEMENT */
+	private int indiceEvnt;
 	
 	public GestionSalles(){
 		
@@ -27,6 +39,9 @@ public class GestionSalles {
 		this.salleNourrice = new SalleNourrice();
 		this.salleSoldat = new SalleSoldat();
 		this.salleStock = new SalleStock();
+		
+		//Evenement
+		this.indiceEvnt = 0; // On commence au premier évenement	
 		
 	}
 	
@@ -55,7 +70,7 @@ public class GestionSalles {
 			
 			// Pour les salle de larve, il faudra "ajouter les fourmi" puis appeler creerLarve
 			salleLarve.ajouterFourmi(nbNourriceUtilisee);
-			salleLarve.creerLarve();
+			salleLarve.creerLarve(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
 			
 			return true;
 		}
@@ -77,7 +92,7 @@ public class GestionSalles {
 			salleNourrice.supprimerFourmi(nbNourriceUtilisee);
 			
 			salleSoldat.ajouterFourmi(nbNourriceUtilisee);
-			salleSoldat.creerSoldat();
+			salleSoldat.creerSoldat(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
 			
 			return true;
 		}
@@ -99,12 +114,95 @@ public class GestionSalles {
 			salleNourrice.supprimerFourmi(nbNourriceUtilisee - (nbNourriceUtilisee%2) );
 			
 			salleSoldat.ajouterFourmi(nbNourriceUtilisee - (nbNourriceUtilisee%2) );
-			salleSoldat.creerSoldat();
+			salleSoldat.creerSoldat(Constantes.LISTE_EVENEMENTS[this.indiceEvnt]);
 			
 			return true;
 		}
 	}
 	
 	
+	/* EVENEMENTS */
 	
+	/*
+	* La fonction decallerEvenement prendra en paramètre un caractère 
+	* qui correspondra au mouvement voulu et un nombre correspondant au nombre de decallage.
+	*  On pourra avoir 2 mouvements "Droite" ou "Gauche". 
+	* Chaque déplacement entrainant un changement d'événement 
+	*/
+	
+	public boolean decallerEvenement(int nbDecal, char cote){
+		
+		if(nbDecal <= 0){
+			System.out.println("Probleme evenements: supérieur à 0 requis");
+			return false;
+		}
+		
+		// Vérification nombre de nourrices
+		int nbNourrices = this.salleNourrice.getNbCourantFourmi();
+		
+		if( (nbNourrices - nbDecal) < 0){
+			System.out.println("Probleme evenements: pas assez de nourrices");
+			return false;
+		}
+		
+		// Modification evenement
+		if(cote == Constantes.GAUCHE){
+			
+			if( (this.indiceEvnt - nbDecal) < 0){ 
+				return false;
+			}else{
+				this.salleNourrice.supprimerFourmi(nbDecal);
+				this.indiceEvnt -= nbDecal;
+				return true;
+			}
+			
+		}else if(cote == Constantes.DROITE){
+			
+			if( (this.indiceEvnt + nbDecal) >= Constantes.NOMBRE_EVENEMENTS){ 
+				return false;
+			}else{
+				this.salleNourrice.supprimerFourmi(nbDecal);
+				this.indiceEvnt += nbDecal;
+				return true;
+			}
+			
+		}else{ // Probleme
+			System.out.println("PROBLEME AVEC LES EVENEMENTS");
+			return false;
+		}
+	}
+	
+	/* GETTERS / SETTERS */
+	public int getIndiceEvnt(){
+		return this.indiceEvnt;
+	}
+	
+	public void setIndiceEvnt(int newI){
+		this.indiceEvnt = newI;
+	}
+
+	public SalleAtelier getSalleAtelier() {
+		return salleAtelier;
+	}
+
+	public SalleLarve getSalleLarve() {
+		return salleLarve;
+	}
+
+	public SalleNourrice getSalleNourrice() {
+		return salleNourrice;
+	}
+
+	public SalleOuvriere getSalleOuvriere() {
+		return salleOuvriere;
+	}
+
+	public SalleSoldat getSalleSoldat() {
+		return salleSoldat;
+	}
+
+	public SalleStock getSalleStock() {
+		return salleStock;
+	}
+
 }

@@ -21,7 +21,7 @@ public class SalleOuvriereTest {
 	public void testCreerOuvriere() {
 		SalleOuvriere testOuvriere = new SalleOuvriere();
 		testOuvriere.ajouterFourmi(2);
-		testOuvriere.creerOuvriere();
+		testOuvriere.creerOuvriere(Constantes.EVEN_OUVRIERES);
 		assertEquals(3, testOuvriere.getNbCourantFourmi());
 	}
 	
@@ -30,7 +30,7 @@ public class SalleOuvriereTest {
 		SalleOuvriere testOuvriere2 = new SalleOuvriere();
 		testOuvriere2.ajouterFourmi(2);
 		Evenements.getInstance().modifierEvenement(Constantes.EVEN_OUVRIERES, new Boolean(true));
-		testOuvriere2.creerOuvriere();
+		testOuvriere2.creerOuvriere(Constantes.EVEN_OUVRIERES);
 		assertEquals(4, testOuvriere2.getNbCourantFourmi());
 	}
 

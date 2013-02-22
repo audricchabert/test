@@ -14,7 +14,7 @@ public class SalleSoldatTest {
 	public void testCreerSoldat() {
 		SalleSoldat testSoldat = new SalleSoldat();
 		testSoldat.ajouterFourmi(3);
-		testSoldat.creerSoldat();
+		testSoldat.creerSoldat(Constantes.EVEN_SOLDAT);
 		assertEquals(5, testSoldat.getNbCourantFourmi());
 	}
 	
@@ -23,7 +23,7 @@ public class SalleSoldatTest {
 		SalleSoldat testSoldat2 = new SalleSoldat();
 		testSoldat2.ajouterFourmi(3);
 		Evenements.getInstance().modifierEvenement(Constantes.EVEN_SOLDAT, new Boolean(true));
-		testSoldat2.creerSoldat();
+		testSoldat2.creerSoldat(Constantes.EVEN_SOLDAT);
 		assertEquals(6, testSoldat2.getNbCourantFourmi());
 	}
 
