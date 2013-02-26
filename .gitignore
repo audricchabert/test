@@ -1,0 +1,7 @@
+# --- Liste des fichiers ignorés
+
+# Ignorer tous les fichiers .class
+*.class
+
+# Ignorer le fichier .classpath
+.classpath

@@ -1,0 +1,51 @@
+<project name="projet" default="compile" basedir=".">
+
+<!-- ===================== Definitions de propriétés =========================== -->
+
+  <property name="app"         		value="." />
+  <property name="src"         		value="${app}/src"/>
+  <property name="bin"				value="${app}/bin"/>
+  <property name="lib"				value="${app}/lib"/>
+  
+  <property name="junit"			value="${lib}/junit-4.11.jar"/>
+  <property name="hamcrest"			value="${lib}/hamcrest-core-1.3.jar"/>
+
+<!-- ==================== Chemin de Compilation (Classpath) =========================== -->
+
+  <path id="project.class.path">
+    <pathelement location="${lib}"/>
+	<pathelement location="${java.class.path}"/>
+	<pathelement location="${junit}"/>
+	<pathelement location="${hamcrest}"/>
+  </path>
+
+<!-- ==================== "clean" Target ============================== -->
+
+ <target name="clean" description="efface tout le repertoire bin">
+    <delete dir="${bin}"/>
+ </target>
+
+<!-- ==================== "prepare" Target ================================ -->
+
+  <target name="prepare" description="prepare la compilation">
+    <mkdir  dir="${bin}"/>
+  </target>
+
+<!-- ==================== "compile" Target ================================ -->
+
+  <target name="compile" depends="prepare" description="compile tous les fichiers java de src">
+    <javac srcdir="${src}" destdir="${bin}" includes="**/*.java">
+		<classpath refid="project.class.path"/>
+	</javac>
+  </target>
+  
+<!-- ==================== "run" Target ================================ -->
+
+  <target name="run" depends="compile"  >
+      <java classname="main.main">
+         <classpath>
+           <pathelement location="bin"/>
+          </classpath>
+       </java>
+  </target>
+</project>	
