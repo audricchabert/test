@@ -34,19 +34,23 @@ public class SalleAtelier extends Salle {
 	 * renvoit true si c'est bon, false si un probleme est survenu
 	 */
 	
-	public boolean ajouteNourrice(int indiceEvenement){
+	public boolean ajouteNourrice(int indiceEvenement) {
 		
-		if(indiceEvenement >= 0 && indiceEvenement <= 3){ // L'indice doit correspondre au tableau
+		// L'indice doit correspondre au tableau
+		if(indiceEvenement >= 0 && indiceEvenement <= 3) {
 			
-			if(! evenements[indiceEvenement]){ // Il ne faut pas qu'il y ait déja une nourrice
+			// Il ne faut pas qu'il y ait deja une nourrice
+			if(!evenements[indiceEvenement]) { 
 				evenements[indiceEvenement] = true;
 				return true;
-			}else{
+			}
+			else {
 				System.out.println("Il y a deja une nourrice sur cette evenement");
 				return false;
 			}
 			
 		}else{
+			System.out.println("Indice inconnu");
 			return false;
 		}
 	}

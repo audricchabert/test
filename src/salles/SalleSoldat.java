@@ -3,6 +3,7 @@
  */
 package salles;
 
+import plateauIndividuel.Evenements;
 import utils.Constantes;
 import fourmis.Soldat;
 
@@ -11,7 +12,7 @@ import fourmis.Soldat;
  *
  */
 public class SalleSoldat extends Salle {
-	
+
 	@Override
 	public boolean ajouterFourmi() {
 		this.getListeFourmis().add(new Soldat());
@@ -54,6 +55,28 @@ public class SalleSoldat extends Salle {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Pour les naissance, il faudra aller chercher dans la salle des nourrice
+	 * s'il y en a, si tel est le cas, on retire la nourrice et on cree les
+	 * fourmis voulus
+	 */
+	public boolean naissanceSoldats(int nbNourriceUtilisee, SalleNourrice sn) {
+		if ((nbNourriceUtilisee <= 1) || (nbNourriceUtilisee > 3)) {
+			System.out.println("Erreur lors de la creation de soldats: nb superieur a  1 et inferieur a  4 seulement");
+			return false;
+		}
+
+		if (sn.getNbCourantFourmi() < nbNourriceUtilisee) {
+			System.out.println("Erreur lors de la creation de soldats: pas assez de nourrices");
+			return false;
+		} 
+		else {
+			sn.supprimerFourmi(nbNourriceUtilisee);
+			creerSoldat(Evenements.getInstance().getEvenementCourant(), nbNourriceUtilisee);
+			return true;
+		}
 	}
 
 	/**

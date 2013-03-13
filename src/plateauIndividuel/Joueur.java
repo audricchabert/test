@@ -1,23 +1,23 @@
 package plateauIndividuel;
 
 /**
- * Cette classe modélisera le joueur
+ * Cette classe modelisera le joueur
  * 
  * @author mazen
  */
 
 public class Joueur {
 	
-	GestionSalles gs;
+	PlateauIndividuel plateauIndividuel;
 	String pseudo;
 	
 	public Joueur(String pseudo){
-		this.gs = new GestionSalles();
+		this.plateauIndividuel = new PlateauIndividuel();
 		this.pseudo = pseudo;
 	}
 
-	public GestionSalles getGs() {
-		return gs;
+	public PlateauIndividuel getPlateauIndividuel() {
+		return plateauIndividuel;
 	}
 
 	public String getPseudo() {
