@@ -138,7 +138,7 @@ public class GestionSalles {
 			return false;
 		}
 		
-		if(nbNourrices < 1){
+		if(nbNourrices  < 1){
 			System.out.println("Pas assez de nourrices!");
 			return false;
 		}else{
@@ -243,15 +243,15 @@ public class GestionSalles {
 	public boolean decallerEvenement(int nbDecal, char cote){
 		
 		if(nbDecal <= 0){
-			System.out.println("Probleme evenements: supérieur à 0 requis");
+			System.out.println("Probleme evenements: superieur a 0 requis");
 			return false;
 		}
 		
-		// Vérification nombre de larves
+		// Verification nombre de larves
 		int nbLarves = this.salleLarve.getNbCourantFourmi();
 		
 		if( (nbLarves - nbDecal) < 0){
-			System.out.println("Probleme evenements: pas assez de larves");
+			System.out.println("Probleme evenements : pas assez de larves");
 			return false;
 		}
 		

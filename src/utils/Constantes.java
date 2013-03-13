@@ -9,7 +9,7 @@ package utils;
 public class Constantes {
 	
 	/**
-	 * Les ï¿½vï¿½nements
+	 * Les evenements
 	 */
 	public static final String EVEN_NIVEAU = "Niveau+1";
 	public static final String EVEN_PV = "PV+1";
@@ -46,6 +46,12 @@ public class Constantes {
 	//Mouvements
 	public static char DROITE = 'd';
 	public static char GAUCHE = 'g';
+	
+	/**
+	 * Nombre maximum de fourmis même temps dans une salle
+	 * Classe : salle.java
+	 */
+	public static final int NB_FOURMILIERE_PAR_SALLE_MAX = 30;
 	
 	
 	/**
