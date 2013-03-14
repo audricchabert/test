@@ -2,12 +2,15 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Test;
+
 import salles.SalleAtelier;
 import utils.Constantes;
 import utils.Fonctions;
 
 public class SalleAtelierTest {
 	
+	@Test
 	public void ajouteNourriceTest() {
 		
 		// Resultat attendu
@@ -21,6 +24,7 @@ public class SalleAtelierTest {
 		assertTrue(Fonctions.arrayBoolEquals(tabExpected, s.getEvenements()));
 	}
 
+	@Test
 	public void viderTest() {
 		
 		// Resultat attendu

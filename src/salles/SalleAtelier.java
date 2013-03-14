@@ -8,7 +8,7 @@ import utils.Constantes;
  * @author mazen
  */
 
-public class SalleAtelier extends Salle{
+public class SalleAtelier extends Salle {
 
 	/*
 	 * Dans la salle des ouvrieres, l'utilisateur peut choisir de placer ses ouvriere sur 4 cases possibles.
@@ -34,19 +34,23 @@ public class SalleAtelier extends Salle{
 	 * renvoit true si c'est bon, false si un probleme est survenu
 	 */
 	
-	public boolean ajouteNourrice(int indiceEvenement){
+	public boolean ajouteNourrice(int indiceEvenement) {
 		
-		if(indiceEvenement >= 0 && indiceEvenement <= 3){ // L'indice doit correspondre au tableau
+		// L'indice doit correspondre au tableau
+		if(indiceEvenement >= 0 && indiceEvenement <= 3) {
 			
-			if(! evenements[indiceEvenement]){ // Il ne faut pas qu'il y ait déja une nourrice
+			// Il ne faut pas qu'il y ait deja une nourrice
+			if(!evenements[indiceEvenement]) { 
 				evenements[indiceEvenement] = true;
 				return true;
-			}else{
-				System.out.println("Il y a déja une nourrice sur cette évènement");
+			}
+			else {
+				System.out.println("Il y a deja une nourrice sur cette evenement");
 				return false;
 			}
 			
 		}else{
+			System.out.println("Indice inconnu");
 			return false;
 		}
 	}
@@ -68,6 +72,29 @@ public class SalleAtelier extends Salle{
 		for(int i=0; i<evenements.length; i++){
 			evenements[i] = false;
 		}
+	}
+
+	/**
+	 * La salle atelier ne stocke pas de fourmis
+	 */
+	@Override
+	public boolean ajouterFourmi() {
+		return false;
+	}
+
+	@Override
+	public boolean ajouterFourmi(int nombre) {
+		return false;
+	}
+
+	@Override
+	public boolean supprimerFourmi() {
+		return false;
+	}
+
+	@Override
+	public boolean supprimerFourmi(int nombre) {
+		return false;
 	}
 	
 }

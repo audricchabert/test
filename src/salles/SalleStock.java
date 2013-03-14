@@ -81,6 +81,9 @@ public class SalleStock extends Salle {
 
 	}
 
+	/**
+	 * La salle stock ne stocke pas de fourmis
+	 */
 	@Override
 	public boolean ajouterFourmi() {
 		// Ne rien faire
