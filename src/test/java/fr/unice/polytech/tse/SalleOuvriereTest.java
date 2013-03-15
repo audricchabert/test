@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests;
+package fr.unice.polytech.tse;
 
 import static org.junit.Assert.assertEquals;
 

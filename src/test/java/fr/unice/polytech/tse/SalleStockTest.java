@@ -1,9 +1,7 @@
-package tests;
+package fr.unice.polytech.tse;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import salles.SalleStock;
 import utils.Constantes;
 

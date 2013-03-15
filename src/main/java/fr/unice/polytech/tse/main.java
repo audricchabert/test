@@ -1,4 +1,4 @@
-package main;
+package fr.unice.polytech.tse;
 
 import vues.console;
 
