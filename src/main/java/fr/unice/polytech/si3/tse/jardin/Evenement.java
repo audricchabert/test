@@ -7,7 +7,7 @@ package jardin;
 	 *
 	 */
 
-public class Evenement
+public abstract class Evenement
 {
-
+	
 }
