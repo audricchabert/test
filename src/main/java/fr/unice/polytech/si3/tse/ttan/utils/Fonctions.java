@@ -1,5 +1,10 @@
 package fr.unice.polytech.si3.tse.ttan.utils;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
+import fr.unice.polytech.si3.tse.ttan.jardin.Pheromone;
+
 /**
  * Fonctions globales utiles au projet
  * 
@@ -37,4 +42,48 @@ public class Fonctions {
 		
 		return true;
 	}
+	
+	/**
+	 * Prend un groupe de phéromone et vérifie qu'ils sont valide.
+	 * Un groupe de phéromones est considéré comme valide si toute les phéromone
+	 * sous-jacentes sont réliées entres elle une à une.
+	 * -> O(n(n+1)/2) => O(n²)
+	 * 
+	 * @param groupePheromone
+	 * @return boolean
+	 * @author mazen
+	 */
+	
+	public static boolean verifieGroupePheromone(ArrayList<int[]> groupePheromone){
+		
+		int taille = groupePheromone.size();
+		boolean isValide = true;
+		
+		for(int i=0; i<taille-1; i++){
+			int[] compare1 = groupePheromone.get(i);
+			int x1 = compare1[0];
+			int y1 = compare1[1];
+			
+			for(int j=i+1; j<taille; j++){
+				int[] compare2 = groupePheromone.get(j);
+				int x2 = compare2[0];
+				int y2 = compare2[1];
+				
+				/* Vérifier que les abcisses soient adjacent*/
+				if(! ((x1 == x2) || (x1 == x2-1) || (x1 == x2+1)) ){
+					isValide = false;
+					break;
+				}
+				
+				/* Vérifier ordonnées */
+				if(! ((y1 == y2) || (y1 == y2-1) || (y1 == y2+1)) ){
+					isValide = false;
+					break;
+				}
+			}
+		}
+		
+		return isValide;
+	}
+	
 }

@@ -1,4 +1,4 @@
-package jardin;
+package fr.unice.polytech.si3.tse.ttan.jardin;
 
 
 	/**

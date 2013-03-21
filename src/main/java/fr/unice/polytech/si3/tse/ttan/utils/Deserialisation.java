@@ -1,8 +1,6 @@
-package utils;
+package fr.unice.polytech.si3.tse.ttan.utils;
 
-
-import jardin.Tuile;
-
+import fr.unice.polytech.si3.tse.ttan.jardin.Tuile;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,10 +20,11 @@ import org.xml.sax.SAXException;
 public class Deserialisation {
 
 	
-	private String nom = "plateau.xml";
+	private String nom;
 	private Tuile[][] plateau ;
 	
-	public Deserialisation(){
+	public Deserialisation(String path){
+		this.nom = path;
 		plateau = new Tuile[16][16];
 	}
 	
@@ -48,8 +47,8 @@ public class Deserialisation {
 	    		 int x = Integer.parseInt(tuileElement.getAttribute("x"));
 	    		 int y = Integer.parseInt(tuileElement.getAttribute("y"));
 	    		 String type =tuileElement.getAttribute("type");
-	    		 Boolean joueur2 =Boolean.parseBoolean(tuileElement.getAttribute("joueur2"));
-	    		 Boolean joueur3 =Boolean.parseBoolean(tuileElement.getAttribute("joueur3"));
+	    		 Boolean joueur2 = Boolean.parseBoolean(tuileElement.getAttribute("joueur2"));
+	    		 Boolean joueur3 = Boolean.parseBoolean(tuileElement.getAttribute("joueur3"));
 	    	   
 	    		Tuile tuile = new Tuile(x,y,type,joueur2,joueur3);
 	    		
