@@ -1,9 +1,10 @@
-package fr.unice.polytech.si3.tse.ttan.jardin;
+package jardin;
+
 
 	/**
 	 * La tuile repr�sente une des cases du jardin. Elles contiennent un type, peuvent recevoir des ph�romones 
 	 * et sont utilis�es pour d�terminer les d�placements des fourmis � l'�xterieur de leur fourmili�re
-	 * @author achabert
+	 * @author fauconni
 	 *
 	 */
 
@@ -18,6 +19,8 @@ public class Tuile
 	private int abscisse, ordonnee;
 	private String type;
 	private Evenement evenement;
+	private Boolean joueur2; //indique si cette case est disponible en mode 2 joueur
+	private Boolean joueur3;
 	
 	
 	/**
@@ -27,12 +30,12 @@ public class Tuile
 	 * @param type
 	 * @param evenement
 	 */
-	public Tuile( int abscisse, int ordonnee, String type, Evenement evenement)
+	public Tuile( int abscisse, int ordonnee, String type, Boolean joueur2, Boolean joueur3)
 		{
 			this.type = type;
 			this.abscisse = abscisse;
 			this.ordonnee = ordonnee;
-			this.evenement = evenement;
+			this.evenement = null;
 		}
 	/**
 	 * Accesseurs en �criture
