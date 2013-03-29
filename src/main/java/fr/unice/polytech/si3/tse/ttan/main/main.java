@@ -1,6 +1,6 @@
 package fr.unice.polytech.si3.tse.ttan.main;
 
-import fr.unice.polytech.si3.tse.ttan.vues.console;
+import fr.unice.polytech.si3.tse.ttan.vues.Console;
 
 public class main {
 
@@ -8,7 +8,7 @@ public class main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new console();
+		new Console();
 	}
 
 }

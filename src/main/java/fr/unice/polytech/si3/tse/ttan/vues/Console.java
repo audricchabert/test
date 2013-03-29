@@ -11,14 +11,14 @@ import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
  * @author mazen
  */
 
-public class console {
+public class Console {
 	
-	public console(){
+	public Console(){
 		
-		this.run();
+		this.lancer();
 	}
 
-	public void run() {
+	public void lancer() {
 		// On va simuler 1 tour de plateau !
 		System.out.println("Debut du tour");
 		
