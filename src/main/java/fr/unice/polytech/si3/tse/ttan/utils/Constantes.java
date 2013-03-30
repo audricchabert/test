@@ -3,10 +3,13 @@ package fr.unice.polytech.si3.tse.ttan.utils;
 /**
  * Constantes du projet
  * 
+ * Une classe qui ne contient que des constructeurs private
+ * doit être défini final
+ * 
  * @author mazen
  */
 
-public class Constantes {
+public final class Constantes {
 	
 	/**
 	 * Les evenements
@@ -34,18 +37,18 @@ public class Constantes {
 	 * EVENEMENTS
 	 */
 	
-	public static int NOMBRE_EVENEMENTS = 8;
-	public static String[] LISTE_EVENEMENTS = {EVEN_NIVEAU, EVEN_PV, EVEN_LARVE, EVEN_RECOLTE, EVEN_DEPLACEMENT, EVEN_SOLDAT, EVEN_PHEROMONE, EVEN_OUVRIERES};
+	public static final int NOMBRE_EVENEMENTS = 8;
+	public static final String[] LISTE_EVENEMENTS = {EVEN_NIVEAU, EVEN_PV, EVEN_LARVE, EVEN_RECOLTE, EVEN_DEPLACEMENT, EVEN_SOLDAT, EVEN_PHEROMONE, EVEN_OUVRIERES};
 	
 	// Indices pour evenements
-	public static int NOUVELLE_GALERIE = 0;
-	public static int AMELIORER_FOURMILIERE = 1;
-	public static int CREER_NOURRICE = 2;
-	public static int OBJECTIF = 3;
+	public static final int NOUVELLE_GALERIE = 0;
+	public static final int AMELIORER_FOURMILIERE = 1;
+	public static final int CREER_NOURRICE = 2;
+	public static final int OBJECTIF = 3;
 	
 	//Mouvements
-	public static char DROITE = 'd';
-	public static char GAUCHE = 'g';
+	public static final char DROITE = 'd';
+	public static final char GAUCHE = 'g';
 	
 	/**
 	 * Nombre maximum de fourmis m�me temps dans une salle
@@ -58,4 +61,12 @@ public class Constantes {
 	 * Les constantes de la classe fourmiliere
 	 */
 	public static final int NIVEAU_FOURMILIERE_MAX = 4;
+
+	/**
+	 *  On doit définir le constructeur en mode private car 
+	 *  cette classe ne contient que des variable constantes
+	 *  et ne doit pas être instancié
+	 */
+	
+	private Constantes(){};
 }
