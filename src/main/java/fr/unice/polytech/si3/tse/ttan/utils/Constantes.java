@@ -16,6 +16,8 @@ public final class Constantes {
 	 * plateau generale 
 	*/
 	public static final int TAILLE_MATRICE = 16;
+	public static final int MAX_TAILLE_PHEROMONE = 5;
+	public static final int MIN_TAILLE_PHEROMONE = 2;
 	
 	/**
 	 * Exceptions

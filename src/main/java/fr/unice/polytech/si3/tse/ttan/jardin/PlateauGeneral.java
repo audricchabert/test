@@ -1,14 +1,16 @@
 package fr.unice.polytech.si3.tse.ttan.jardin;
 
-import java.awt.Point;
-import java.util.ArrayList;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
+import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 import fr.unice.polytech.si3.tse.ttan.utils.Deserialisation;
 import fr.unice.polytech.si3.tse.ttan.utils.Fonctions;
 
 public class PlateauGeneral {
 	
-	Tuile[][] matrice;
+	private Tuile[][] matrice;
 	
 	/**
 	 * Prend le chemin du xml modélisant le plateau général, 
@@ -33,24 +35,35 @@ public class PlateauGeneral {
 	 * @return
 	 */
 	
-	public boolean placerPheromones(int taillePheromone, ArrayList<int[]> listeCoordonees){
+	public boolean placerPheromones(int taillePheromone, List<int[]> listeCoordonees){
 		
 		int taille = listeCoordonees.size();
+		PrintStream err = System.err;
 		
 		/* TESTS */
 		if(taillePheromone != taille){
-			System.out.println("Probleme => Tailles ne concordent pas");
+			err.println("Probleme => Tailles ne concordent pas");
 			return false;
-		}else if(taille < 2 || taille >5){
-			System.out.println("Probleme => Phéromones trop grandes ou trop petites");
+		}else if(taille < Constantes.MIN_TAILLE_PHEROMONE || taille >Constantes.MAX_TAILLE_PHEROMONE){
+			err.println("Probleme => Phéromones trop grandes ou trop petites");
 			return false;
 		}else if(!Fonctions.verifieGroupePheromone(listeCoordonees)){
-			System.out.println("Probleme => Les phéromones ne sont pas adjacentes");
+			err.println("Probleme => Les phéromones ne sont pas adjacentes");
 			return false;
 		}
 		
 		/* Placer les phéromones */
 		
 		return true;
+	}
+
+	public Tuile[][] getMatrice() {
+		return matrice.clone();
+	}
+
+	public void setMatrice(Tuile[][] matrice) {
+		
+		this.matrice = Arrays.copyOf(matrice, matrice.length);
+		
 	}
 }
