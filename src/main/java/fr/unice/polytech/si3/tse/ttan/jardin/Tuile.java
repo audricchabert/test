@@ -19,7 +19,8 @@ public class Tuile
 	private int abscisse, ordonnee;
 	private String type;
 	private Evenement evenement;
-	private Boolean joueur2; //indique si cette case est disponible en mode 2 joueur
+	//indique si cette case est disponible en mode 2 joueur
+	private Boolean joueur2; 
 	private Boolean joueur3;
 	
 	
@@ -36,6 +37,9 @@ public class Tuile
 			this.abscisse = abscisse;
 			this.ordonnee = ordonnee;
 			this.evenement = null;
+			
+			this.joueur2 = joueur2;
+			this.joueur3 = joueur3;
 		}
 	/**
 	 * Accesseurs en �criture
@@ -113,4 +117,17 @@ public class Tuile
 		{
 			this.type= type;
 		}
+	
+	public Boolean getJoueur3() {
+		return joueur3;
+	}
+	public void setJoueur3(Boolean joueur3) {
+		this.joueur3 = joueur3;
+	}
+	public Boolean getJoueur2() {
+		return joueur2;
+	}
+	public void setJoueur2(Boolean joueur2) {
+		this.joueur2 = joueur2;
+	}
 }
