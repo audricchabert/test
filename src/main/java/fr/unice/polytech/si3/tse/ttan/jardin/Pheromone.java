@@ -11,13 +11,7 @@ package fr.unice.polytech.si3.tse.ttan.jardin;
 
 public class Pheromone extends Evenement
 {	
-	/**
-	 * Attributs de la classe Pheromone.
-	 * Un compteur statique servira a garder un compte des pheromones mises en jeu.
-	 * Ce compte servira aussi pour donner un identifiant a la tuile(l'ensemble de case) pheromone cible.
-	 * L'identifiant ainsi que la ressource de la case pheromone sont declares ci dessous.
-	 */
-	public static int compteurIdentifiantPheromone=0;
+	
 	private int identifiantPheromone;
 	private Ressource ressource;
 	
@@ -27,10 +21,9 @@ public class Pheromone extends Evenement
 	 * @param uneAbscisse
 	 * @param uneOrdonnee
 	 */
-	public Pheromone(int unIdentifiantTuile[], int uneAbscisse, int uneOrdonnee)
+	public Pheromone(int identifiant)
 		{
-			this.identifiantPheromone=compteurIdentifiantPheromone;
-			compteurIdentifiantPheromone=compteurIdentifiantPheromone+1;
+			this.identifiantPheromone = identifiant;
 		}
 	
 	/**
@@ -72,8 +65,7 @@ public class Pheromone extends Evenement
 	 */
 	public Ressource recolterRessource()
 		{
-			Ressource ressource=this.ressource;
-			this.ressource=null;
-			return ressource;
+			return this.ressource;
 		}
+
 }
