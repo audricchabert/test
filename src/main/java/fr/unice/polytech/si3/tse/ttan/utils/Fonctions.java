@@ -70,7 +70,7 @@ public final class Fonctions {
 				int x2 = compare2[0];
 				int y2 = compare2[1];
 				
-				/* Vérifier que les abcisses soient adjacent*/
+				/* Vérifier que les abcisses sont adjacent*/
 				if(! ((x1 == x2) || (x1 == x2-1) || (x1 == x2+1)) ){
 					isValide = false;
 					break;
