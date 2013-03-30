@@ -9,7 +9,7 @@ package fr.unice.polytech.si3.tse.ttan.jardin;
 public abstract class Element
 {
 	//attributs � changer
-	String identifiant;
+	private String identifiant;
 	
 	public Element( String unIdentifiant)
 		{
