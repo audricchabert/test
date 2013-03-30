@@ -1,9 +1,6 @@
 package fr.unice.polytech.si3.tse.ttan.utils;
 
-import java.awt.Point;
-import java.util.ArrayList;
-
-import fr.unice.polytech.si3.tse.ttan.jardin.Pheromone;
+import java.util.List;
 
 /**
  * Fonctions globales utiles au projet
@@ -14,7 +11,7 @@ import fr.unice.polytech.si3.tse.ttan.jardin.Pheromone;
  * @author mazen
  */
 
-public class Fonctions {
+public final class Fonctions {
 	
 	/**
 	 * Test si 2 array sont équivalents, 2 array sont équivalents s'ils ont la meme taille
@@ -54,7 +51,11 @@ public class Fonctions {
 	 * @author mazen
 	 */
 	
-	public static boolean verifieGroupePheromone(ArrayList<int[]> groupePheromone){
+	/* IL faut utiliser le type List et non ArrayList 
+	 * "Avoid using implementation types like 'ArrayList'; use the interface instead"
+	 * Aucune idée pourquoi..
+	 */
+	public static boolean verifieGroupePheromone(List<int[]> groupePheromone){
 		
 		int taille = groupePheromone.size();
 		boolean isValide = true;
@@ -86,4 +87,5 @@ public class Fonctions {
 		return isValide;
 	}
 	
+	private Fonctions(){};
 }
