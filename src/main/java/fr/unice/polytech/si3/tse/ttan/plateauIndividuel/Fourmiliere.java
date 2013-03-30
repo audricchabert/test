@@ -1,9 +1,5 @@
 package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleAtelier;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleLarve;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleOuvriere;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleStock;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 /**
@@ -21,8 +17,8 @@ public class Fourmiliere
 	 * Puisque seul une ouvriere peut travailler dans un niveau,
 	 * nous avons choisi d'utiliser des booleens.
 	 */
-	public boolean[] niveauxFourmiliere = new boolean[Constantes.NIVEAU_FOURMILIERE_MAX];
-	public int niveauMaximumCourant;
+	private boolean[] niveauxFourmiliere = new boolean[Constantes.NIVEAU_FOURMILIERE_MAX];
+	private int niveauMaximumCourant;
 
 	/**
 	 * Constructeurs
@@ -34,7 +30,7 @@ public class Fourmiliere
 	 * @param niveauMaximumCourant
 	 */
 	public Fourmiliere(boolean niveauxFourmiliere[], int niveauMaximumCourant) {
-		this.niveauxFourmiliere=niveauxFourmiliere;
+		this.niveauxFourmiliere = niveauxFourmiliere.clone();
 		this.niveauMaximumCourant = niveauMaximumCourant;
 	}
 
@@ -42,7 +38,8 @@ public class Fourmiliere
 	 * Constructeur sans parametres
 	 */
 	public Fourmiliere() {
-		this(new boolean[Constantes.NIVEAU_FOURMILIERE_MAX] , 0); // Niveau 0 au début
+		// Niveau 0 au début
+		this(new boolean[Constantes.NIVEAU_FOURMILIERE_MAX] , 0);
 	}
 
 	/**
@@ -80,7 +77,7 @@ public class Fourmiliere
 	 * Accesseur en ecriture du tableau de niveaux
 	 */
 	public void setNiveauxFourmiliere(boolean[] nouveauNiveauxFourmiliere) {
-		this.niveauxFourmiliere = nouveauNiveauxFourmiliere;
+		this.niveauxFourmiliere = nouveauNiveauxFourmiliere.clone();
 	}
 	
 	/**
@@ -90,7 +87,8 @@ public class Fourmiliere
 	
 	public boolean ameliorerFourmiliere(SalleAtelier sa) {
 		
-		if(getNiveauMaximumCourant() == 3){ // Rien ne sert d'aller plus haut
+		// Rien ne sert d'aller plus haut
+		if(getNiveauMaximumCourant() == 3){
 			return false;
 		}
 		
@@ -104,9 +102,10 @@ public class Fourmiliere
 			sa.getEvenements()[Constantes.AMELIORER_FOURMILIERE] = false;
 			return true;
 		}
-		else
+		else {
 			// Impossible, pas de nourrice sur l'evenement
 			return false;
+		}
 	}
 
 	/**
@@ -123,8 +122,9 @@ public class Fourmiliere
 			sl.creerLarve(Evenements.getInstance().getEvenementCourant(), 1);
 		}
 		// Test s'il y a une fourmi au niveau 1. Si oui, on ajoute une ressource nourriture.
-		if (niveauxFourmiliere[1])
-		ss.ajouterRessource(Constantes.RESS_NOURRITURE, 1);
+		if (niveauxFourmiliere[1]) {
+			ss.ajouterRessource(Constantes.RESS_NOURRITURE, 1);
+		}
 
 		// Test s'il y a une fourmi au niveau 2. Si oui, on ajoute une ressource de terre et de pierre.
 		if (niveauxFourmiliere[2]) {
@@ -141,25 +141,21 @@ public class Fourmiliere
 	public boolean placerOuvriere(int etage, SalleOuvriere so) {
 		
 		if (etage < 0 || etage > 3){
-			System.out.println("Hors range");
-			return false;
+			throw new IllegalArgumentException(Constantes.EX_HORSRANGE);
 		}
 		
 		// Verifier qu'on a acces a cet etage
 		if (etage > niveauMaximumCourant) {
-			System.out.println("La fourmiliere n'a pas ce niveau");
-			return false;
+			throw new IllegalArgumentException(Constantes.EX_INVALIDARGUMENT);
 			
 		}
 		// Verifier qu'il n'y a pas deja une fourmi dans cet etage
 		if (niveauxFourmiliere[etage]) {
-			System.out.println("Cet etage de la fourmiliere est deja occupe");
-			return false;
+			throw new ExceptionOuvrieres(Constantes.EX_DUPOUVRIERE);
 		}
 		// Verifier qu'on a assez d'ouvrieres
 		if (so.getNbCourantFourmi() < 1) {
-			System.out.println("Pas assez d'ouvrieres");
-			return false;
+			throw new ExceptionOuvrieres(Constantes.EX_MANQUEOUVRIERE);
 		}
 		// C'est bon
 		else {

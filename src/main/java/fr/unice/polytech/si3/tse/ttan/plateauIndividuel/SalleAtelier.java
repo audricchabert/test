@@ -1,4 +1,4 @@
-package fr.unice.polytech.si3.tse.ttan.salles;
+package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
@@ -10,19 +10,21 @@ import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 public class SalleAtelier extends Salle {
 
+	
+	private static final int NB_EVEN_ATELIER = 4;
 	/*
 	 * Dans la salle des ouvrieres, l'utilisateur peut choisir de placer ses ouvriere sur 4 cases possibles.
 	 * Chacune permettant à la fin d'un tur d'effectuer une action précise. On a choisit de modéliser ces 
 	 * choix par un tableau de 4 boolean, ou chaque case correspondrait à l'événement choisis.
 	 * true si une ouvrière est placé sur cette evenement, false sinon. 
 	 */
-	boolean[] evenements;
+	private boolean[] evenements;
 	
 	public SalleAtelier() {
 		super();
 		
 		// Initialisation des évenements à false
-		this.evenements = new boolean[4];
+		this.evenements = new boolean[NB_EVEN_ATELIER];
 		this.evenements[Constantes.AMELIORER_FOURMILIERE] = false;
 		this.evenements[Constantes.CREER_NOURRICE] = false;
 		this.evenements[Constantes.NOUVELLE_GALERIE] = false;
@@ -45,13 +47,12 @@ public class SalleAtelier extends Salle {
 				return true;
 			}
 			else {
-				System.out.println("Il y a deja une nourrice sur cette evenement");
-				return false;
+				throw new ExceptionNourrices(Constantes.EX_DUPNOURRICE);
 			}
 			
-		}else{
-			System.out.println("Indice inconnu");
-			return false;
+		}
+		else {
+			throw new IllegalArgumentException("Indice Inconnu");
 		}
 	}
 	

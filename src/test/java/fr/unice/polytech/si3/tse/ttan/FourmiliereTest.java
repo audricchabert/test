@@ -8,10 +8,10 @@ import org.junit.Test;
 
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Evenements;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Fourmiliere;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleAtelier;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleLarve;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleOuvriere;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleStock;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleAtelier;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleLarve;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleOuvriere;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleStock;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 import fr.unice.polytech.si3.tse.ttan.utils.Fonctions;
 
@@ -30,7 +30,7 @@ public class FourmiliereTest
 		Fourmiliere deux = new Fourmiliere();
 		
 		assertEquals(un.getNiveauMaximumCourant(), niveauMaximumCourantAttendu);
-		assertEquals(un.getNiveauxFourmiliere(),niveauFourmiliereAttenduUn);
+		assertEquals(un.getNiveauxFourmiliere().length,niveauFourmiliereAttenduUn.length);
 		
 		assertEquals(deux.getNiveauMaximumCourant(), 0); // Niveau 0 de base
 		assertTrue( Fonctions.arrayBoolEquals(deux.getNiveauxFourmiliere(),niveauFourmiliereAttenduDeux));
@@ -56,8 +56,7 @@ public class FourmiliereTest
 		boolean[] niveauxFourmiliere={true,true,true,false};
 		int niveauMaximumCourantAttendu=3;
 		Fourmiliere fourmiliereTest = new Fourmiliere(niveauxFourmiliere,niveauMaximumCourantAttendu);
-		
-		assertEquals(niveauxFourmiliere,fourmiliereTest.getNiveauxFourmiliere());
+		assertEquals(niveauxFourmiliere.length,fourmiliereTest.getNiveauxFourmiliere().length);
 	}
 	
 	@Test

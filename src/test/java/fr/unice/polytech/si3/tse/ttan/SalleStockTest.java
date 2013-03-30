@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleStock;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleStock;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 public class SalleStockTest {

@@ -1,9 +1,8 @@
 /**
  * 
  */
-package fr.unice.polytech.si3.tse.ttan.salles;
+package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
-import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Evenements;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 import fr.unice.polytech.si3.tse.ttan.fourmis.Ouvriere;
 
@@ -23,8 +22,9 @@ public class SalleOuvriere extends Salle {
 	@Override
 	public boolean ajouterFourmi(int nombre) {
 		if (nombre > 0) {
-			for (int i = 0; i < nombre; i++)
+			for (int i = 0; i < nombre; i++) {
 				this.getListeFourmis().add(new Ouvriere());
+			}
 			return true;
 		}
 		return false;
@@ -32,8 +32,9 @@ public class SalleOuvriere extends Salle {
 
 	@Override
 	public boolean supprimerFourmi() {
-		if (this.getListeFourmis().isEmpty())
+		if (this.getListeFourmis().isEmpty()) {
 			return false;
+		}
 		else {
 			int taille = this.getListeFourmis().size() - 1;
 			this.getListeFourmis().remove(taille);
@@ -44,8 +45,9 @@ public class SalleOuvriere extends Salle {
 	@Override
 	public boolean supprimerFourmi(int nombre) {
 		if (nombre > 0) {
-			if (this.getListeFourmis().isEmpty())
+			if (this.getListeFourmis().isEmpty()) {
 				return false;
+			}
 			else {
 				int taille = 0;
 				for(int i = 0; i < nombre; i++) {
@@ -65,13 +67,11 @@ public class SalleOuvriere extends Salle {
 	 */
 	public boolean naissanceOuvrieres(int nbNourriceUtilisee, SalleNourrice sn) {
 		if ((nbNourriceUtilisee <= 1) || (nbNourriceUtilisee > 4)) {
-			System.out.println("Erreur lors de la création d'ouvrieres: nb supérieur à 1 et inférieur à 5 seulement");
-			return false;
+			throw new IllegalArgumentException(Constantes.EX_HORSRANGE);
 		}
 
 		if (sn.getNbCourantFourmi() < nbNourriceUtilisee) {
-			System.out.println("Erreur lors de la création d'ouvrieres: pas assez de nourrices");
-			return false;
+			throw new ExceptionNourrices(Constantes.EX_MANQUENOURRICE);
 		} 
 		else {
 			// On retire nbNourrice modulo 2 car l'utilisateur peut choisir
@@ -88,12 +88,15 @@ public class SalleOuvriere extends Salle {
 	 */
 	public void creerOuvriere(String evenementActuel, int nbLarves) {
 		if (nbLarves > 1) {
-			if (nbLarves == 2)
+			if (nbLarves == 2) {
 				ajouterFourmi(1);
-			if (nbLarves == 4)
+			}
+			if (nbLarves == 4) {
 				ajouterFourmi(2);
-			if (evenementActuel.equals(Constantes.EVEN_OUVRIERES))
+			}
+			if (evenementActuel.equals(Constantes.EVEN_OUVRIERES)) {
 				ajouterFourmi(1);
+			}
 		}
 	}
 }

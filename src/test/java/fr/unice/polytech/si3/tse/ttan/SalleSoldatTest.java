@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleSoldat;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleSoldat;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 public class SalleSoldatTest {

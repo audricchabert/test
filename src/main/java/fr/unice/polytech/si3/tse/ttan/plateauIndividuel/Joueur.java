@@ -8,8 +8,8 @@ package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
 public class Joueur {
 	
-	PlateauIndividuel plateauIndividuel;
-	String pseudo;
+	private PlateauIndividuel plateauIndividuel;
+	private String pseudo;
 	
 	public Joueur(String pseudo){
 		this.plateauIndividuel = new PlateauIndividuel();

@@ -5,11 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Evenements;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.PlateauIndividuel;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleAtelier;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleLarve;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleOuvriere;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleSoldat;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleAtelier;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleLarve;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleOuvriere;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleSoldat;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 import fr.unice.polytech.si3.tse.ttan.utils.Fonctions;
 
@@ -30,6 +31,7 @@ public class PlateauIndividuelTest {
 	@Test
 	public void testNaissanceLarves(){
 		PlateauIndividuel gs = new PlateauIndividuel();
+		Evenements.getInstance().setEvenementActif(Constantes.EVEN_NIVEAU);
 		
 		assertTrue(gs.naissanceLarves(1));
 		
@@ -42,6 +44,7 @@ public class PlateauIndividuelTest {
 	@Test
 	public void testNaissanceSoldats(){
 		PlateauIndividuel gs = new PlateauIndividuel();
+		Evenements.getInstance().setEvenementActif(Constantes.EVEN_NIVEAU);
 		
 		assertTrue(gs.naissanceSoldats(2));
 		
@@ -54,6 +57,7 @@ public class PlateauIndividuelTest {
 	@Test
 	public void testNaissanceOuvrieres(){
 		PlateauIndividuel gs = new PlateauIndividuel();
+		Evenements.getInstance().setEvenementActif(Constantes.EVEN_NIVEAU);
 		
 		assertTrue(gs.naissanceOuvrieres(2)); // 2 nourrices => 1 ouvriere
 		

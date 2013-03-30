@@ -4,33 +4,33 @@
 package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleLarve;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 /**
  * @author Antoine Lavail
  *
  */
-public class Evenements {
-
-	private LinkedHashMap<String, Boolean> listeEvenements;
+public final class Evenements {
+ 
+	private Map<String, Boolean> listeEvenements;
 
 	/**
 	 *  Constructeur par defaut
 	 */
 	private Evenements() {
-		listeEvenements = new LinkedHashMap<String, Boolean>(7);
-		listeEvenements.put(Constantes.EVEN_NIVEAU, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_PV, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_LARVE, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_RECOLTE, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_DEPLACEMENT, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_SOLDAT, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_PHEROMONE, new Boolean(false));
-		listeEvenements.put(Constantes.EVEN_OUVRIERES, new Boolean(false));
+		listeEvenements = new LinkedHashMap<String, Boolean>(Constantes.NB_EVENEMENTS);
+		listeEvenements.put(Constantes.EVEN_NIVEAU, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_PV, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_LARVE, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_RECOLTE, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_DEPLACEMENT, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_SOLDAT, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_PHEROMONE, Boolean.FALSE);
+		listeEvenements.put(Constantes.EVEN_OUVRIERES, Boolean.FALSE);
 	}
 
-	public LinkedHashMap<String, Boolean> getListeEvenements() {
+	public Map<String, Boolean> getListeEvenements() {
 		return listeEvenements;
 	}
 
@@ -52,12 +52,12 @@ public class Evenements {
 
 		if (listeEvenements.containsKey(evenement)) {
 			if (getEvenementCourant() != null) {
-				listeEvenements.put(getEvenementCourant(), false);
-				listeEvenements.put(evenement, new Boolean(true));
+				listeEvenements.put(getEvenementCourant(), Boolean.FALSE);
+				listeEvenements.put(evenement, Boolean.TRUE);
 				return true;
 			}
 			else {
-				listeEvenements.put(evenement, new Boolean(true));
+				listeEvenements.put(evenement,Boolean.TRUE);
 				return true;
 			}
 		}
@@ -72,15 +72,13 @@ public class Evenements {
 	 */
 	public boolean decallerEvenement(int nombreDeDecallage, char cote, SalleLarve sl) {
 
-		if(nombreDeDecallage <= 0){
-			System.out.println("Probleme evenements: superieur a 0 requis");
-			return false;
+		if(nombreDeDecallage <= 0) {
+			throw new IllegalArgumentException(Constantes.EX_HORSRANGE);
 		}
 		
 		// Verification du nombre de larves
-		if( (sl.getNbCourantFourmi() - nombreDeDecallage) < 0){
-			System.out.println("Probleme evenements : pas assez de larves");
-			return false;
+		if( (sl.getNbCourantFourmi() - nombreDeDecallage) < 0) {
+			throw new ExceptionLarves(Constantes.EX_MANQUELARVE);
 		}
 		
 		// Modification Evenement
@@ -109,8 +107,9 @@ public class Evenements {
 	 */
 	public String getEvenementCourant() {
 		for (String mapKey : listeEvenements.keySet()) {
-			if (listeEvenements.get(mapKey))
+			if (listeEvenements.get(mapKey)) {
 				return mapKey;
+			}
 		}
 		return null;
 	}
