@@ -3,10 +3,12 @@ package fr.unice.polytech.si3.tse.ttan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Evenements;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.ExceptionOuvrieres;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Fourmiliere;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleAtelier;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleLarve;
@@ -57,6 +59,10 @@ public class FourmiliereTest
 		int niveauMaximumCourantAttendu=3;
 		Fourmiliere fourmiliereTest = new Fourmiliere(niveauxFourmiliere,niveauMaximumCourantAttendu);
 		assertEquals(niveauxFourmiliere.length,fourmiliereTest.getNiveauxFourmiliere().length);
+		
+		niveauxFourmiliere[1] = false;
+		fourmiliereTest.setNiveauxFourmiliere(niveauxFourmiliere);
+		assertEquals(niveauxFourmiliere[1], fourmiliereTest.getNiveauxFourmiliere()[1]);
 	}
 	
 	@Test
@@ -80,7 +86,18 @@ public class FourmiliereTest
 		assertEquals(5, ss.getNbNourriture());
 		assertEquals(2, ss.getNbPierre());
 		assertEquals(3, ss.getNbTerre());
-		assertEquals(4, sl.getNbCourantFourmi());	
+		assertEquals(4, sl.getNbCourantFourmi());
+		
+		boolean[] fourmisDansNiveauxFourmiliere2 = {false, false, false, false};
+		f.setNiveauxFourmiliere(fourmisDansNiveauxFourmiliere2);
+		
+		f.genererRessources(sl, ss);
+		
+		assertEquals(5, ss.getNbNourriture());
+		assertEquals(2, ss.getNbPierre());
+		assertEquals(3, ss.getNbTerre());
+		assertEquals(4, sl.getNbCourantFourmi());
+		
 	}
 	
 	@Test
@@ -100,6 +117,15 @@ public class FourmiliereTest
 		
 		// Ensuite, on verifie que la nourrice a ete enleve de l'atelier
 		assertFalse(sa.getEvenements()[Constantes.AMELIORER_FOURMILIERE]);
+		
+		// On atteind le max
+		f.setNiveauMaximumCourant(3);
+		assertFalse(f.ameliorerFourmiliere(sa));
+		
+		f.setNiveauMaximumCourant(2);
+		sa.vider();
+		// Cas sans nourrice sur evenement
+		assertFalse(f.ameliorerFourmiliere(sa));
 	}
 	
 	@Test
@@ -116,5 +142,45 @@ public class FourmiliereTest
 		
 		// On devrait avoir une fourmi dans le premier etage seulement
 		assertTrue(Fonctions.arrayBoolEquals(f.getNiveauxFourmiliere(), tabVoulu));
+		
+		try {
+			f.placerOuvriere(-1, so);
+			fail("Exception non lancee");
+		}
+		catch (IllegalArgumentException iae) {
+			// Do Nothing
+		}
+		try {
+			f.placerOuvriere(5, so);
+			fail("Exception non lancee");
+		}
+		catch (IllegalArgumentException iae) {
+			// Do Nothing
+		}
+		
+		try {
+			f.placerOuvriere(f.getNiveauMaximumCourant()+1, so);
+			fail("Exception non lancee");
+		}
+		catch (IllegalArgumentException iae) {
+			// Do Nothing
+		}
+		
+		try {
+			f.placerOuvriere(0, so);
+			fail("Exception non lancee");
+		}
+		catch (ExceptionOuvrieres eo) {
+			// Do Nothing
+		}
+		f.setNiveauMaximumCourant(2);
+		so.supprimerFourmi(2);
+		try {
+			f.placerOuvriere(1, so);
+			fail("Exception non lancee");
+		}
+		catch (ExceptionOuvrieres eo) {
+			// Do Nothing
+		}
 	}
 }

@@ -6,12 +6,14 @@ package fr.unice.polytech.si3.tse.ttan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Map;
 
 import org.junit.Test;
 
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.Evenements;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.ExceptionLarves;
 import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleLarve;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
@@ -35,6 +37,8 @@ public class EvenementsTest {
 	 */
 	@Test
 	public void testSetEvenementActif() {
+		
+		assertFalse(Evenements.getInstance().setEvenementActif("EvenementInconnu"));
 		assertFalse(Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_PV));
 		Evenements.getInstance().setEvenementActif(Constantes.EVEN_PV);
 		assertTrue(Evenements.getInstance().getListeEvenements().get(Constantes.EVEN_PV));
@@ -52,7 +56,7 @@ public class EvenementsTest {
 		
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testDecallerEvenement() {
 		
 		Evenements.getInstance().setEvenementActif(Constantes.EVEN_RECOLTE);
@@ -81,8 +85,20 @@ public class EvenementsTest {
 		assertEquals(Constantes.EVEN_SOLDAT, Evenements.getInstance().getEvenementCourant());
 		assertEquals(2, sl.getNbCourantFourmi());
 		
-		// Retourne une erreur
-		//assertFalse(Evenements.getInstance().decallerEvenement(3, Constantes.GAUCHE, sl));
+		// Cote invalide
+		assertFalse(Evenements.getInstance().decallerEvenement(1, 'I', sl));
+		
+		// Retourne une exception de type ExceptionLarves
+		try {
+		Evenements.getInstance().decallerEvenement(3, Constantes.GAUCHE, sl);
+		fail("ExceptionLarves non levee.");
+		}
+		catch (ExceptionLarves e){
+			// Do nothing, the exception has been catched
+		}
+		
+		// Retourne une erreur (Constantes.EX_HORSRANGE)
+		assertFalse(Evenements.getInstance().decallerEvenement(-2, Constantes.GAUCHE, sl));
 	}
 	
 

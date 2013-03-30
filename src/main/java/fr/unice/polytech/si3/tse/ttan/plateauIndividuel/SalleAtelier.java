@@ -52,7 +52,7 @@ public class SalleAtelier extends Salle {
 			
 		}
 		else {
-			throw new IllegalArgumentException("Indice Inconnu");
+			throw new IllegalArgumentException(Constantes.EX_HORSRANGE);
 		}
 	}
 	

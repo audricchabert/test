@@ -30,12 +30,17 @@ public class SalleStockTest {
 	}
 
 	@Test
-	public void testSupprimerRessource() {		
+	public void testSupprimerRessource() {
 		SalleStock testStock2 = new SalleStock();
 		
 		testStock2.ajouterRessource(Constantes.RESS_NOURRITURE, 3);
 		testStock2.ajouterRessource(Constantes.RESS_PIERRE, 6);
 		testStock2.ajouterRessource(Constantes.RESS_TERRE, 1);
+		
+		assertFalse(testStock2.supprimerRessource(Constantes.RESS_NOURRITURE, 5));
+		assertFalse(testStock2.supprimerRessource(Constantes.RESS_PIERRE, 8));
+		assertFalse(testStock2.supprimerRessource(Constantes.RESS_TERRE, 3));
+		
 		
 		assertFalse(testStock2.supprimerRessource("FALSE", 1));
 		assertFalse(testStock2.supprimerRessource(Constantes.RESS_NOURRITURE, -8));
@@ -49,6 +54,30 @@ public class SalleStockTest {
 		assertEquals(0, testStock2.getNbTerre());
 		
 		assertFalse(testStock2.supprimerRessource(Constantes.RESS_PIERRE, 5));
+	}
+	
+	@Test
+	public void testajouterFourmi() {
+		SalleStock testStock = new SalleStock();
+		assertFalse(testStock.ajouterFourmi());
+	}
+	
+	@Test
+	public void testajouterFourmi2() {
+		SalleStock testStock = new SalleStock();
+		assertFalse(testStock.ajouterFourmi(5));
+	}
+	
+	@Test
+	public void testSupprimerFourmi() {
+		SalleStock testStock = new SalleStock();
+		assertFalse(testStock.supprimerFourmi());
+	}
+	
+	@Test
+	public void testSupprimerFourmi2() {
+		SalleStock testStock = new SalleStock();
+		assertFalse(testStock.supprimerFourmi(5));
 	}
 
 }

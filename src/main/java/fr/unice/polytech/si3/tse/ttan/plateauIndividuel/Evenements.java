@@ -36,11 +36,11 @@ public final class Evenements {
 
 	private static class EvenementsHolder
 	{
-		private final static Evenements instance = new Evenements();
+		private final static Evenements INSTANCE = new Evenements();
 	}
 
 	public static Evenements getInstance() {
-		return EvenementsHolder.instance;
+		return EvenementsHolder.INSTANCE;
 	}
 
 	/**

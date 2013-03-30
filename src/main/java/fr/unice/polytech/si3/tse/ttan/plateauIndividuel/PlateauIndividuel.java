@@ -43,10 +43,11 @@ public class PlateauIndividuel {
 		this.salleOuvriere.ajouterFourmi(2);
 		this.salleLarve.ajouterFourmi(1);
 
-		// Evenement choisi al�atoirement
+		// Evenement choisi aleatoirement
 		int random = (int) (Math.random() * 9);
-		if (random == 8)
+		if (random == 8) {
 			random--;
+		}
 		Evenements.getInstance().setEvenementActif(
 				Constantes.LISTE_EVENEMENTS[random]);
 
@@ -61,7 +62,7 @@ public class PlateauIndividuel {
 	public boolean naissanceOuvrieres(int nbNourriceUtilisee) {
 		return salleOuvriere.naissanceOuvrieres(nbNourriceUtilisee, salleNourrice);
 	}
-	
+
 	public boolean naissanceSoldats(int nbNourriceUtilisee) {
 		return salleSoldat.naissanceSoldats(nbNourriceUtilisee, salleNourrice);
 	}
@@ -71,17 +72,22 @@ public class PlateauIndividuel {
 	 * evenement on souhaite placer la nourrice.
 	 */
 	public boolean placerNourriceAtelier(int indiceEvenement) {
-		
+
 		if (salleNourrice.getNbCourantFourmi() < 1) {
-			System.out.println("Pas assez de nourrices.");
+			throw new ExceptionNourrices(Constantes.EX_MANQUENOURRICE);
 		}
-		if (salleAtelier.ajouteNourrice(indiceEvenement)) {
-			salleNourrice.supprimerFourmi();
-			return true;
-		} else {
-			System.out.println("Un probleme est survenu");
+		try {
+			salleAtelier.ajouteNourrice(indiceEvenement);
+		}
+		catch (IllegalArgumentException iae) {
 			return false;
 		}
+		catch (ExceptionNourrices en) {
+			return false;
+		}
+		
+		salleNourrice.supprimerFourmi();
+		return true;
 	}
 
 	/* FOURMILIERE */
