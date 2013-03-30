@@ -11,6 +11,12 @@ package fr.unice.polytech.si3.tse.ttan.utils;
 
 public final class Constantes {
 	
+	
+	/**
+	 * plateau generale 
+	*/
+	public static final int TAILLE_MATRICE = 16;
+	
 	/**
 	 * Les evenements
 	 */

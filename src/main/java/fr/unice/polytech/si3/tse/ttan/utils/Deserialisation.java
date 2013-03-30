@@ -3,6 +3,7 @@ package fr.unice.polytech.si3.tse.ttan.utils;
 import fr.unice.polytech.si3.tse.ttan.jardin.Tuile;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import org.w3c.dom.*;
 
@@ -25,7 +26,7 @@ public class Deserialisation {
 	
 	public Deserialisation(String path){
 		this.nom = path;
-		plateau = new Tuile[16][16];
+		plateau = new Tuile[Constantes.TAILLE_MATRICE][Constantes.TAILLE_MATRICE];
 	}
 	
 	public Tuile[][] creationPlateau(){
@@ -59,13 +60,16 @@ public class Deserialisation {
 		
 	     } catch (SAXException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+	    	 PrintStream err = System.err;
+	    	 err.println(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			PrintStream err = System.err;
+			err.println(e);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			PrintStream err = System.err;
+			err.println(e);
 		}
 		
 		return plateau;
