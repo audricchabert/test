@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.unice.polytech.si3.tse.ttan.salles;
+package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
 
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
@@ -59,20 +59,23 @@ public class SalleStock extends Salle {
 	public boolean supprimerRessource(String typeRessource, int nombre) {
 		if (nombre > 0) {
 			if(typeRessource.equals(Constantes.RESS_NOURRITURE)) {
-				if (nbNourriture - nombre < 0)
+				if (nbNourriture - nombre < 0) {
 					return false;
-					nbNourriture -= nombre;
+				}
+				nbNourriture -= nombre;
 				return true;
 			}
 			if(typeRessource.equals(Constantes.RESS_PIERRE)) {
-				if (nbPierre - nombre < 0)
+				if (nbPierre - nombre < 0) {
 					return false;
+				}
 				nbPierre -= nombre;
 				return true;
 			}
 			if(typeRessource.equals(Constantes.RESS_TERRE)) {
-				if (nbTerre - nombre < 0)
+				if (nbTerre - nombre < 0) {
 					return false;
+				}
 				nbTerre -= nombre;
 				return true;
 			}

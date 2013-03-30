@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleOuvriere;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleOuvriere;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 /**

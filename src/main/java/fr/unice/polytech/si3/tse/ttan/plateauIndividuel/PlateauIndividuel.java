@@ -12,12 +12,6 @@ package fr.unice.polytech.si3.tse.ttan.plateauIndividuel;
  * @author mazen, lavail
  */
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleAtelier;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleLarve;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleNourrice;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleOuvriere;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleSoldat;
-import fr.unice.polytech.si3.tse.ttan.salles.SalleStock;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 
 public class PlateauIndividuel {

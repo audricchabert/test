@@ -18,6 +18,17 @@ public final class Constantes {
 	public static final int TAILLE_MATRICE = 16;
 	
 	/**
+	 * Exceptions
+	 */
+	public static final String EX_HORSRANGE = "HorsRange";
+	public static final String EX_INVALIDARGUMENT = "Argument Invalide dans le contexte";
+	public static final String EX_MANQUENOURRICE = "Manque Nourrice pour naissance";
+	public static final String EX_DUPNOURRICE = "Nourrice deja presente sur evenement";
+	public static final String EX_MANQUELARVE = "Manque larve pour decaller evenement";
+	public static final String EX_MANQUEOUVRIERE = "Manque ouvriere pour fourmiliere";
+	public static final String EX_DUPOUVRIERE = "Ouvriere deja presente dans niveau fourmiliere";
+	
+	/**
 	 * Les evenements
 	 */
 	public static final String EVEN_NIVEAU = "Niveau+1";
@@ -28,6 +39,9 @@ public final class Constantes {
 	public static final String EVEN_SOLDAT = "Soldat+1";
 	public static final String EVEN_PHEROMONE = "Pheromone+1";
 	public static final String EVEN_OUVRIERES = "Ouvriere+1";
+	
+	// Nombre d'evenements
+	public static final int NB_EVENEMENTS = 8;
 	
 	/**
 	 * Les types de ressources

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fr.unice.polytech.si3.tse.ttan.salles.SalleAtelier;
+import fr.unice.polytech.si3.tse.ttan.plateauIndividuel.SalleAtelier;
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
 import fr.unice.polytech.si3.tse.ttan.utils.Fonctions;
 
