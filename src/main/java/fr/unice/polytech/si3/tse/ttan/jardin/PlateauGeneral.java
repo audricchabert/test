@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
-import fr.unice.polytech.si3.tse.ttan.utils.Deserialisation;
 import fr.unice.polytech.si3.tse.ttan.utils.Fonctions;
 
 public class PlateauGeneral {

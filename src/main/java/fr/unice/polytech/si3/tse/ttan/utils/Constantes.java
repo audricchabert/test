@@ -58,7 +58,7 @@ public final class Constantes {
 	/**
 	 * EVENEMENTS
 	 */
-	
+	 
 	public static final int NOMBRE_EVENEMENTS = 8;
 	public static final String[] LISTE_EVENEMENTS = {EVEN_NIVEAU, EVEN_PV, EVEN_LARVE, EVEN_RECOLTE, EVEN_DEPLACEMENT, EVEN_SOLDAT, EVEN_PHEROMONE, EVEN_OUVRIERES};
 	

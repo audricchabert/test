@@ -1,6 +1,7 @@
-package fr.unice.polytech.si3.tse.ttan.utils;
+package fr.unice.polytech.si3.tse.ttan.jardin;
 
-import fr.unice.polytech.si3.tse.ttan.jardin.Tuile;
+import fr.unice.polytech.si3.tse.ttan.utils.Constantes;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -27,6 +28,14 @@ public class Deserialisation {
 	public Deserialisation(String path){
 		this.nom = path;
 		plateau = new Tuile[Constantes.TAILLE_MATRICE][Constantes.TAILLE_MATRICE];
+	}
+	
+	public Tuile[][] getPlateau(){
+		return this.plateau;
+	}
+	
+	public String getNom(){
+		return this.nom;
 	}
 	
 	public Tuile[][] creationPlateau(){
@@ -62,14 +71,17 @@ public class Deserialisation {
 			// TODO Auto-generated catch block
 	    	 PrintStream err = System.err;
 	    	 err.println(e);
+	    	 return null;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			PrintStream err = System.err;
 			err.println(e);
+			return null;
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			PrintStream err = System.err;
 			err.println(e);
+			return null;
 		}
 		
 		return plateau;

@@ -1,8 +1,11 @@
 package fr.unice.polytech.si3.tse.ttan;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,4 +59,20 @@ public class FonctionTest {
 		assertFalse(Fonctions.verifieGroupePheromone(listePheromone));
 	}
 	
+	/**
+	 * Test si la classe est privée ou non
+	 * code récupéré sur : http://stackoverflow.com/questions/4520216/how-to-add-test-coverage-to-a-private-constructor
+	 * @throws Exception
+	 */
+	  @Test
+	    public void testConstructeurPrivate() throws SecurityException, NoSuchMethodException, IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException
+	    {
+	        Class<?>[] classeConstruct = {Fonctions.class};
+	        for(Class<?> classe : classeConstruct)
+	        {
+	            Constructor<?> constructor = classe.getDeclaredConstructor();
+	            constructor.setAccessible(true);
+	            assertNotNull(constructor.newInstance());
+	        }
+	    }
 }
