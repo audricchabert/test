@@ -1,0 +1,13 @@
+# --- Liste des fichiers ignorés
+
+# Ignorer tous les fichiers .class
+*.class
+
+# Ignorer le fichier .classpath, .project et .settings
+.classpath
+.project
+.settings
+.metadata
+
+# Ignorer le dossier target
+target
